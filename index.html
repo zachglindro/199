@@ -94,14 +94,17 @@
 				function showConflict(container){
 					const out = document.getElementById('console-output');
 					const conflict = [
-						"Auto-merging file.txt",
-						"CONFLICT (content): Merge conflict in file.txt",
+						"Auto-merging src/lib.rs",
+						"CONFLICT (content): Merge conflict in src/lib.rs",
 						"Automatic merge failed; fix conflicts and then commit the result.",
-						"\n<<<<<<<<< HEAD",
-						"Line from your branch",
+						"",
+						"<<<<<<< HEAD",
+						"pub trait Storage { fn get(&self, k: &str) -> BoxFuture<'_, Result<Option<Vec<u8>>, Error>>; }",
 						"=======",
-						"Line from incoming branch",
-						">>>>>>>>> feature"
+						"pub struct InMemoryStorage { /* uses tokio::RwLock<HashMap<String, Vec<u8>>> */ }",
+						">>>>>>> feature/blob-store",
+						"",
+						"(resolve conflicts and then run: git add src/lib.rs)"
 					].join('\n');
 					out.textContent += '\n' + conflict;
 				}
