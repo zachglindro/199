@@ -16,8 +16,26 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h3>CRDTs</h3>
+					<p>Enabling Collaboration in a Decentralized Systems<p>
+					<small>Zach Glindro</small>
+				</section>
+				<section>
+					<div class="console" id="console">
+						<pre class="console-output" id="console-output"></pre>
+						<div class="console-input">$ <span id="console-caret"></span></div>
+					</div>
+				</section>
+				<section>Cloud model & downsides</section>
+				<section>Eventual consistency</section>
+				<section>CRDTs</section>
+				<section>CmRDTs</section>
+				<section>CvRDTs</section>
+				<section>Examples</section>
+				<section>PCGRID</section>
+				<section>PCGRID</section>
+				<section>Conclusion</section>
 			</div>
 		</div>
 
@@ -35,6 +53,86 @@
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
+		</script>
+
+		<!-- Inline console styles and script for the interactive slide -->
+		<style>
+			.console {
+				background: #0b1020;
+				color: #c7d2fe;
+				padding: 1rem;
+				border-radius: 6px;
+				width: 80%;
+				max-width: 900px;
+				margin: 1rem auto; /* center horizontally */
+				box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+				font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
+				font-size: 20px;
+			}
+			.console-output { white-space: pre-wrap; min-height: 4.5rem }
+			.console-input { margin-top: 0.5rem }
+			#console-caret { display: inline-block; min-width: 1ch }
+			@keyframes blink { 0%,100% { opacity: 1 } 50% { opacity: 0 } }
+			#console-caret::after { content: '\00a0'; background: #c7d2fe; color: #0b1020; padding: 0 .15rem; margin-left: .2rem; animation: blink 1s steps(1) infinite }
+		</style>
+
+		<script>
+			// When the Reveal slide with the console is shown, run the typing simulation.
+			(function(){
+				function typeTo(element, text, speed, cb) {
+					let i = 0;
+					function step(){
+						if(i <= text.length){
+							element.textContent = text.slice(0,i);
+							i++;
+							setTimeout(step, speed);
+						}else if(cb){ cb(); }
+					}
+					step();
+				}
+
+				function showConflict(container){
+					const out = document.getElementById('console-output');
+					const conflict = [
+						"Auto-merging file.txt",
+						"CONFLICT (content): Merge conflict in file.txt",
+						"Automatic merge failed; fix conflicts and then commit the result.",
+						"\n<<<<<<<<< HEAD",
+						"Line from your branch",
+						"=======",
+						"Line from incoming branch",
+						">>>>>>>>> feature"
+					].join('\n');
+					out.textContent += '\n' + conflict;
+				}
+
+				// Listen for slide changes
+				Reveal.on('slidechanged', function(event) {
+					// check if the current slide contains our console
+					const current = event.currentSlide;
+					if(current && current.querySelector && current.querySelector('#console')){
+						const inputCaret = document.getElementById('console-caret');
+						const out = document.getElementById('console-output');
+						out.textContent = '';
+						inputCaret.textContent = '';
+						// simulate typing
+						typeTo(inputCaret, 'git merge', 120, function(){
+							// after typing, show a little pause then output conflict
+							setTimeout(function(){ showConflict(); }, 600);
+						});
+					}
+				});
+
+				// If the console slide is the initial slide, trigger typing on ready
+				Reveal.on('ready', function(event){
+					const slide = Reveal.getCurrentSlide();
+					if(slide && slide.querySelector && slide.querySelector('#console')){
+						const inputCaret = document.getElementById('console-caret');
+						inputCaret.textContent = '';
+						typeTo(inputCaret, 'git merge', 120, function(){ setTimeout(function(){ showConflict(); }, 600); });
+					}
+				});
+			})();
 		</script>
 	</body>
 </html>
