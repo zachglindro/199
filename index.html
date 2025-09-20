@@ -71,6 +71,31 @@
         opacity: 1;
         transform: translateY(0);
       }
+      /* dim less-important letters/words */
+      .crdts-dim {
+        color: #9aa0a6; /* gray */
+        opacity: 0.45;
+        transition: opacity 300ms ease, color 300ms ease, transform 300ms ease;
+      }
+      /* highlight the Conflict-free letter */
+      .crdts-highlight {
+        color: #ffd54f; /* warm yellow */
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+        /* don't translate the letter: keep it stable for auto-animate */
+        transform: none;
+        transition: color 300ms ease;
+      }
+      /* when a letter is dimmed, dim the trailing fragment as well */
+      .crdts-dim + .crdts-tail,
+      .crdts-dim ~ .crdts-tail {
+        color: #9aa0a6;
+        opacity: 0.45;
+      }
+      /* ensure highlighted tails remain fully visible */
+      .crdts-highlight + .crdts-tail,
+      .crdts-highlight ~ .crdts-tail {
+        opacity: 1;
+      }
     </style>
   </head>
 
@@ -358,6 +383,47 @@
                 <div>
                   <span>
                     <span class="crdts-letter" data-id="letter-T">T</span>
+                    <span class="crdts-tail">ypes</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- step 3: dim 'Replicated Data Types' and highlight 'Conflict-free' -->
+          <section data-auto-animate>
+            <div class="crdts-stack">
+              <div class="crdts-words">
+                <div>
+                  <span>
+                    <span
+                      class="crdts-letter crdts-highlight"
+                      data-id="letter-C"
+                      >C</span
+                    >
+                    <span class="crdts-tail">onflict-free</span>
+                  </span>
+                </div>
+                <div>
+                  <span>
+                    <span class="crdts-letter crdts-dim" data-id="letter-R"
+                      >R</span
+                    >
+                    <span class="crdts-tail">eplicated</span>
+                  </span>
+                </div>
+                <div>
+                  <span>
+                    <span class="crdts-letter crdts-dim" data-id="letter-D"
+                      >D</span
+                    >
+                    <span class="crdts-tail">ata</span>
+                  </span>
+                </div>
+                <div>
+                  <span>
+                    <span class="crdts-letter crdts-dim" data-id="letter-T"
+                      >T</span
+                    >
                     <span class="crdts-tail">ypes</span>
                   </span>
                 </div>
