@@ -1,133 +1,182 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>reveal.js</title>
 
-	<title>reveal.js</title>
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" />
 
-	<link rel="stylesheet" href="dist/reset.css">
-	<link rel="stylesheet" href="dist/reveal.css">
-	<link rel="stylesheet" href="dist/theme/black.css">
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+  </head>
 
-	<!-- Theme used for syntax highlighted code -->
-	<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	<link rel="stylesheet" href="css/custom.css">
-</head>
+  <body>
+    <div class="reveal" role="region" aria-label="Presentation slides">
+      <div class="slides">
+        <section>
+          <h3>CRDT<span style="text-transform: lowercase">s</span></h3>
+          <p>Enabling Collaboration in a Decentralized Systems</p>
+          <p>
+            <small>Zach Glindro</small>
+          </p>
+        </section>
+        <section>
+          <section>
+            <div class="icons-row" aria-hidden="false">
+              <figure class="icon-figure">
+                <img src="assets/git.png" alt="git icon" class="slide-icon" />
+                <figcaption>git</figcaption>
+              </figure>
+              <figure class="icon-figure">
+                <img
+                  src="assets/github.png"
+                  alt="github icon"
+                  class="slide-icon"
+                />
+                <figcaption>github</figcaption>
+              </figure>
+            </div>
+          </section>
+          <section>
+            <div class="console" id="console">
+              <pre class="console-output" id="console-output"></pre>
+              <div class="console-input">
+                $ <span id="console-caret"></span>
+              </div>
+            </div>
+          </section>
+        </section>
+        <section>
+          <!-- Slide 3-->
+          <section>
+            <div class="center-graphic">
+              <svg
+                viewBox="0 0 600 360"
+                class="network-svg"
+                aria-hidden="true"
+                role="img"
+                aria-label="Network diagram"
+              >
+                <defs>
+                  <filter id="glow">
+                    <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+                    <feMerge>
+                      <feMergeNode in="coloredBlur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                </defs>
+                <!-- links (rendered first so they appear behind nodes) -->
+                <line
+                  class="link"
+                  data-from="c1"
+                  x1="120"
+                  y1="80"
+                  x2="300"
+                  y2="180"
+                />
+                <line
+                  class="link"
+                  data-from="c2"
+                  x1="480"
+                  y1="80"
+                  x2="300"
+                  y2="180"
+                />
+                <line
+                  class="link"
+                  data-from="c3"
+                  x1="300"
+                  y1="300"
+                  x2="300"
+                  y2="180"
+                />
+                <!-- central server -->
+                <g id="server" transform="translate(300,180)">
+                  <rect
+                    x="-36"
+                    y="-22"
+                    width="72"
+                    height="44"
+                    rx="6"
+                    ry="6"
+                    class="server-box"
+                  />
+                  <text x="0" y="6" text-anchor="middle" class="server-label">
+                    Server
+                  </text>
+                </g>
+                <!-- clients -->
+                <g class="client" data-id="c1" transform="translate(120,80)">
+                  <circle r="18" class="client-dot" />
+                  <text y="34" text-anchor="middle" class="client-label">
+                    A
+                  </text>
+                </g>
+                <g class="client" data-id="c2" transform="translate(480,80)">
+                  <circle r="18" class="client-dot" />
+                  <text y="34" text-anchor="middle" class="client-label">
+                    B
+                  </text>
+                </g>
+                <g class="client" data-id="c3" transform="translate(300,300)">
+                  <circle r="18" class="client-dot" />
+                  <text y="34" text-anchor="middle" class="client-label">
+                    C
+                  </text>
+                </g>
+              </svg>
+            </div>
+          </section>
+          <section>
+            <p class="inline-text">Strong consistency</p>
+          </section>
+          <!-- New section: docs icon -->
+          <section>
+            <div class="icons-row" aria-hidden="false">
+              <figure class="icon-figure">
+                <img src="assets/docs.svg" alt="docs icon" class="slide-icon" />
+                <figcaption>docs</figcaption>
+              </figure>
+            </div>
+          </section>
+        </section>
+        <section>Eventual consistency</section>
+        <section>CRDTs</section>
+        <section>CmRDTs</section>
+        <section>CvRDTs</section>
+        <section>Examples</section>
+        <section>PCGRID</section>
+        <section>PCGRID</section>
+        <section>Conclusion</section>
+      </div>
+    </div>
 
-<body>
-	<div class="reveal" role="region" aria-label="Presentation slides">
-		<div class="slides">
-			<section>
-				<h3>CRDT<span style="text-transform: lowercase;">s</span></h3>
-				<p>Enabling Collaboration in a Decentralized Systems</p>
-				<p>
-					<small>Zach Glindro</small>
-				</p>
-			</section>
-			<section>
-				<section>
-					<div class="icons-row" aria-hidden="false">
-						<figure class="icon-figure">
-							<img src="assets/git.png" alt="git icon" class="slide-icon" />
-							<figcaption>git</figcaption>
-						</figure>
-						<figure class="icon-figure">
-							<img src="assets/github.png" alt="github icon" class="slide-icon" />
-							<figcaption>github</figcaption>
-						</figure>
-					</div>
-				</section>
-				<section>
-					<div class="console" id="console">
-						<pre class="console-output" id="console-output"></pre>
-						<div class="console-input">$ <span id="console-caret"></span></div>
-					</div>
-				</section>
-			</section>
-			<section>
-				<!-- Slide 3-->
-				<section>
-					<div class="center-graphic">
-						<svg viewBox="0 0 600 360" class="network-svg" aria-hidden="true" role="img"
-							aria-label="Network diagram">
-							<defs>
-								<filter id="glow">
-									<feGaussianBlur stdDeviation="4" result="coloredBlur" />
-									<feMerge>
-										<feMergeNode in="coloredBlur" />
-										<feMergeNode in="SourceGraphic" />
-									</feMerge>
-								</filter>
-							</defs>
-							<!-- links (rendered first so they appear behind nodes) -->
-							<line class="link" data-from="c1" x1="120" y1="80" x2="300" y2="180" />
-							<line class="link" data-from="c2" x1="480" y1="80" x2="300" y2="180" />
-							<line class="link" data-from="c3" x1="300" y1="300" x2="300" y2="180" />
-							<!-- central server -->
-							<g id="server" transform="translate(300,180)">
-								<rect x="-36" y="-22" width="72" height="44" rx="6" ry="6" class="server-box" />
-								<text x="0" y="6" text-anchor="middle" class="server-label">Server</text>
-							</g>
-							<!-- clients -->
-							<g class="client" data-id="c1" transform="translate(120,80)">
-								<circle r="18" class="client-dot" />
-								<text y="34" text-anchor="middle" class="client-label">A</text>
-							</g>
-							<g class="client" data-id="c2" transform="translate(480,80)">
-								<circle r="18" class="client-dot" />
-								<text y="34" text-anchor="middle" class="client-label">B</text>
-							</g>
-							<g class="client" data-id="c3" transform="translate(300,300)">
-								<circle r="18" class="client-dot" />
-								<text y="34" text-anchor="middle" class="client-label">C</text>
-							</g>
-						</svg>
-					</div>
-				</section>
-				<section>
-					<p class="inline-text">Strong consistency</p>
-				</section>
-				<!-- New section: docs icon -->
-				<section>
-					<div class="icons-row" aria-hidden="false">
-						<figure class="icon-figure">
-							<img src="assets/docs.svg" alt="docs icon" class="slide-icon" />
-							<figcaption>docs</figcaption>
-						</figure>
-					</div>
-				</section>
-			</section>
-			<section>Eventual consistency</section>
-			<section>CRDTs</section>
-			<section>CmRDTs</section>
-			<section>CvRDTs</section>
-			<section>Examples</section>
-			<section>PCGRID</section>
-			<section>PCGRID</section>
-			<section>Conclusion</section>
-		</div>
-	</div>
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
 
-	<script src="dist/reveal.js"></script>
-	<script src="plugin/notes/notes.js"></script>
-	<script src="plugin/markdown/markdown.js"></script>
-	<script src="plugin/highlight/highlight.js"></script>
-	<script>
-		// More info about initialization & config:
-		// - https://revealjs.com/initialization/
-		// - https://revealjs.com/config/
-		Reveal.initialize({
-			hash: true,
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
 
-			// Learn about plugins: https://revealjs.com/plugins/
-			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
-		});
-	</script>
-
-	<script src="js/custom/network.js"></script>
-	<script src="js/custom/console-sim.js"></script>
-</body>
-
+    <script src="js/custom/network.js"></script>
+    <script src="js/custom/console-sim.js"></script>
+  </body>
 </html>
