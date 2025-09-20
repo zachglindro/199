@@ -13,16 +13,18 @@
 
 	<!-- Theme used for syntax highlighted code -->
 	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	<link rel="stylesheet" href="css/custom.css">
 </head>
 
 <body>
-	<div class="reveal">
+	<div class="reveal" role="region" aria-label="Presentation slides">
 		<div class="slides">
 			<section>
 				<h3>CRDT<span style="text-transform: lowercase;">s</span></h3>
-				<p>Enabling Collaboration in a Decentralized Systems
+				<p>Enabling Collaboration in a Decentralized Systems</p>
 				<p>
 					<small>Zach Glindro</small>
+				</p>
 			</section>
 			<section>
 				<section>
@@ -36,43 +38,6 @@
 							<figcaption>github</figcaption>
 						</figure>
 					</div>
-					<style>
-						.icons-row {
-							display: flex;
-							gap: 2rem;
-							justify-content: center;
-							align-items: center;
-							padding: 1rem 0;
-						}
-
-						.icon-figure {
-							display: flex;
-							flex-direction: column;
-							align-items: center;
-							color: #cbd5e1;
-							font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-						}
-
-						.slide-icon {
-							width: 96px;
-							height: 96px;
-							object-fit: contain;
-							display: block;
-						}
-
-						.icon-figure figcaption {
-							margin-top: .5rem;
-							font-size: 0.9rem;
-							color: #9ca3af;
-						}
-
-						@media (max-width: 640px) {
-							.slide-icon {
-								width: 64px;
-								height: 64px
-							}
-						}
-					</style>
 				</section>
 				<section>
 					<div class="console" id="console">
@@ -85,7 +50,8 @@
 				<!-- Slide 3-->
 				<section>
 					<div class="center-graphic">
-						<svg viewBox="0 0 600 360" class="network-svg" aria-hidden="true">
+						<svg viewBox="0 0 600 360" class="network-svg" aria-hidden="true" role="img"
+							aria-label="Network diagram">
 							<defs>
 								<filter id="glow">
 									<feGaussianBlur stdDeviation="4" result="coloredBlur" />
@@ -119,98 +85,6 @@
 							</g>
 						</svg>
 					</div>
-					<style>
-						/* keep styles local and dark-theme friendly */
-						.center-graphic {
-							width: 80%;
-							max-width: 900px;
-							margin: 0.8rem auto;
-						}
-
-						.network-svg {
-							width: 100%;
-							height: auto;
-							display: block;
-						}
-
-						.server-box {
-							fill: #111827;
-							stroke: #7dd3fc;
-							stroke-width: 2px;
-							filter: url(#glow);
-						}
-
-						.server-label {
-							fill: #7dd3fc;
-							font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-							font-size: 14px
-						}
-
-						.client-dot {
-							fill: #60a5fa;
-							stroke: #93c5fd;
-							stroke-width: 1.5px;
-							cursor: pointer;
-							transition: fill 200ms, opacity 200ms, transform 200ms;
-						}
-
-						.client-label {
-							fill: #cbd5e1;
-							font-size: 12px
-						}
-
-						.link {
-							stroke: #93c5fd;
-							stroke-width: 2;
-							stroke-linecap: round;
-							transition: stroke 200ms, opacity 200ms;
-						}
-
-						.client.offline .client-dot {
-							fill: #374151;
-							opacity: 0.6;
-							transform: scale(0.95);
-						}
-
-						.client.offline+.link,
-						.link.offline {
-							stroke: #4b5563;
-							opacity: 0.35;
-						}
-
-						.figure-caption {
-							text-align: center;
-							color: #cbd5e1;
-							font-size: 12px;
-							margin-top: .4rem
-						}
-
-						@media (prefers-reduced-motion: no-preference) {
-							.client-dot:hover {
-								transform: scale(1.12);
-							}
-						}
-					</style>
-					<script>
-						// Interactive behavior: toggle client offline/online
-						(function () {
-							const clients = document.querySelectorAll('.center-graphic .client');
-							const links = document.querySelectorAll('.center-graphic .link');
-							clients.forEach(c => {
-								c.addEventListener('click', function () {
-									const id = c.getAttribute('data-id');
-									const isOffline = c.classList.toggle('offline');
-									// find corresponding link(s)
-									links.forEach(l => {
-										if (l.getAttribute('data-from') === id) {
-											if (isOffline) { l.classList.add('offline'); }
-											else { l.classList.remove('offline'); }
-										}
-									});
-								});
-							});
-						})();
-					</script>
 				</section>
 				<section>
 					<p class="inline-text">Strong consistency</p>
@@ -252,119 +126,8 @@
 		});
 	</script>
 
-	<!-- Inline console styles and script for the interactive slide -->
-	<style>
-		.console {
-			background: #0b1020;
-			color: #c7d2fe;
-			padding: 1rem;
-			border-radius: 6px;
-			width: 80%;
-			max-width: 900px;
-			margin: 1rem auto;
-			/* center horizontally */
-			box-shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
-			font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
-			font-size: 20px;
-		}
-
-		.console-output {
-			white-space: pre-wrap;
-			min-height: 4.5rem
-		}
-
-		.console-input {
-			margin-top: 0.5rem
-		}
-
-		#console-caret {
-			display: inline-block;
-			min-width: 1ch
-		}
-
-		@keyframes blink {
-
-			0%,
-			100% {
-				opacity: 1
-			}
-
-			50% {
-				opacity: 0
-			}
-		}
-
-		#console-caret::after {
-			content: '\00a0';
-			background: #c7d2fe;
-			color: #0b1020;
-			padding: 0 .15rem;
-			margin-left: .2rem;
-			animation: blink 1s steps(1) infinite
-		}
-	</style>
-
-	<script>
-		// When the Reveal slide with the console is shown, run the typing simulation.
-		(function () {
-			function typeTo(element, text, speed, cb) {
-				let i = 0;
-				function step() {
-					if (i <= text.length) {
-						element.textContent = text.slice(0, i);
-						i++;
-						setTimeout(step, speed);
-					} else if (cb) { cb(); }
-				}
-				step();
-			}
-
-			function showConflict(container) {
-				const out = document.getElementById('console-output');
-				const conflict = [
-					"Auto-merging src/lib.rs",
-					"CONFLICT (content): Merge conflict in src/lib.rs",
-					"Automatic merge failed; fix conflicts and then commit the result.",
-					"",
-					"<<<<<<< HEAD",
-					"pub trait Storage { fn get(&self, k: &str) -> BoxFuture<'_, Result<Option<Vec<u8>>, Error>>; }",
-					"=======",
-					"pub struct InMemoryStorage { /* uses tokio::RwLock<HashMap<String, Vec<u8>>> */ }",
-					">>>>>>> feature/blob-store",
-					"",
-					"(resolve conflicts and then run: git add src/lib.rs)"
-				].join('\n');
-				out.textContent += '\n' + conflict;
-			}
-
-			// Listen for slide changes
-			Reveal.on('slidechanged', function (event) {
-				// check if the current slide contains our console
-				const current = event.currentSlide;
-				if (current && current.querySelector && current.querySelector('#console')) {
-					const inputCaret = document.getElementById('console-caret');
-					const out = document.getElementById('console-output');
-					out.textContent = '';
-					inputCaret.textContent = '';
-					// simulate typing
-					typeTo(inputCaret, 'git merge', 120, function () {
-						// after typing, show a little pause then output conflict
-						setTimeout(function () { showConflict(); }, 600);
-					});
-				}
-			});
-
-			// If the console slide is the initial slide, trigger typing on ready
-			Reveal.on('ready', function (event) {
-				const slide = Reveal.getCurrentSlide();
-				if (slide && slide.querySelector && slide.querySelector('#console')) {
-					const inputCaret = document.getElementById('console-caret');
-					inputCaret.textContent = '';
-					typeTo(inputCaret, 'git merge', 120, function () { setTimeout(function () { showConflict(); }, 600); });
-				}
-			});
-		})();
-	</script>
+	<script src="js/custom/network.js"></script>
+	<script src="js/custom/console-sim.js"></script>
 </body>
 
 </html>
