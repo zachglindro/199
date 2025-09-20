@@ -465,38 +465,97 @@
 
         <!-- Slide 6 -->
         <section>
-          <!-- Commutative CRDT (copy of slide 5 step 2 with Conflict-free -> Commutative) -->
           <section>
-            <div class="crdts-stack">
-              <div class="crdts-words">
-                <div>
-                  <span>
-                    <span class="crdts-spec-letter" data-id="letter-C">C</span>
-                    <span class="crdts-vertical">
-                      <span class="crdts-tail crdts-highlight no-animate"
-                        >ommutative</span
+            <p>Operation-based CRDTs</p>
+          </section>
+          <!-- New subsections: minimal demo for Alice & Bob -->
+          <section data-auto-animate>
+            <div class="mini-demo center-graphic">
+              <div class="two-lists">
+                <div class="person" id="alice" data-id="person-alice">
+                  <div class="person-name" data-id="name-alice">Alice</div>
+                  <ul class="tasks">
+                    <li class="task" data-id="t1">
+                      <span class="task-title">Buy milk</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="person" id="bob" data-id="person-bob">
+                  <div class="person-name" data-id="name-bob">Bob</div>
+                  <ul class="tasks">
+                    <li class="task" data-id="t1">
+                      <span class="task-title">Buy milk</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- local edits: Alice adds time, Bob adds comment -->
+          <section data-auto-animate>
+            <div class="mini-demo center-graphic">
+              <div class="two-lists">
+                <div class="person" id="alice" data-id="person-alice">
+                  <div class="person-name" data-id="name-alice">Alice</div>
+                  <ul class="tasks">
+                    <li class="task" data-id="t1">
+                      <span class="task-title">Buy milk</span>
+                      <span class="task-meta"
+                        >— <em class="meta-time">8:00 AM</em></span
                       >
-                      <span class="crdts-tail no-animate">onvergent</span>
-                    </span>
-                  </span>
+                    </li>
+                  </ul>
                 </div>
-                <div>
-                  <span>
-                    <span class="crdts-letter" data-id="letter-R">R</span>
-                    <span class="crdts-tail no-animate">eplicated</span>
-                  </span>
+                <div class="person" id="bob" data-id="person-bob">
+                  <div class="person-name" data-id="name-bob">Bob</div>
+                  <ul class="tasks">
+                    <li class="task" data-id="t1">
+                      <span class="task-title">Buy milk</span>
+                      <span class="task-meta"
+                        >—
+                        <em class="meta-comment"
+                          >Don't forget almond milk</em
+                        ></span
+                      >
+                    </li>
+                  </ul>
                 </div>
-                <div>
-                  <span>
-                    <span class="crdts-letter" data-id="letter-D">D</span>
-                    <span class="crdts-tail no-animate">ata</span>
-                  </span>
+              </div>
+            </div>
+          </section>
+
+          <!-- after sync: both appear -->
+          <section data-auto-animate>
+            <div class="mini-demo center-graphic">
+              <div class="two-lists">
+                <div class="person" id="alice" data-id="person-alice">
+                  <div class="person-name" data-id="name-alice">Alice</div>
+                  <ul class="tasks">
+                    <li class="task merged" data-id="t1">
+                      <span class="task-title">Buy milk</span>
+                      <span class="task-meta"
+                        >— <em class="meta-time">8:00 AM</em>;
+                        <em class="meta-comment"
+                          >Don't forget almond milk</em
+                        ></span
+                      >
+                    </li>
+                  </ul>
                 </div>
-                <div>
-                  <span>
-                    <span class="crdts-letter" data-id="letter-T">T</span>
-                    <span class="crdts-tail no-animate">ypes</span>
-                  </span>
+                <div class="person" id="bob" data-id="person-bob">
+                  <div class="person-name" data-id="name-bob">Bob</div>
+                  <ul class="tasks">
+                    <li class="task merged" data-id="t1">
+                      <span class="task-title">Buy milk</span>
+                      <span class="task-meta"
+                        >— <em class="meta-time">8:00 AM</em>;
+                        <em class="meta-comment"
+                          >Don't forget almond milk</em
+                        ></span
+                      >
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -505,39 +564,8 @@
 
         <!-- Slide 7-->
         <section>
-          <!-- Convergent CRDT (copy of slide 5 step 2 with Conflict-free -> Convergent) -->
           <section>
-            <div class="crdts-stack">
-              <div class="crdts-words">
-                <div>
-                  <span>
-                    <span class="crdts-spec-letter" data-id="letter-C">C</span>
-                    <span class="crdts-vertical">
-                      <span class="crdts-tail">ommutative</span>
-                      <span class="crdts-tail crdts-highlight">onvergent</span>
-                    </span>
-                  </span>
-                </div>
-                <div>
-                  <span>
-                    <span class="crdts-letter" data-id="letter-R">R</span>
-                    <span class="crdts-tail">eplicated</span>
-                  </span>
-                </div>
-                <div>
-                  <span>
-                    <span class="crdts-letter" data-id="letter-D">D</span>
-                    <span class="crdts-tail">ata</span>
-                  </span>
-                </div>
-                <div>
-                  <span>
-                    <span class="crdts-letter" data-id="letter-T">T</span>
-                    <span class="crdts-tail">ypes</span>
-                  </span>
-                </div>
-              </div>
-            </div>
+            <p>State-based CRDTs</p>
           </section>
         </section>
 

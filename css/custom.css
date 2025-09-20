@@ -290,3 +290,69 @@
     width: 86%;
   }
 }
+
+/* Mini demo: two task lists for Alice and Bob */
+.mini-demo .two-lists {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  align-items: flex-start;
+  width: 80%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.mini-demo .person {
+  background: linear-gradient(180deg, #071129, #0f1724);
+  border: 1px solid rgba(148, 163, 184, 0.06);
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  width: 320px;
+  box-shadow: 0 8px 18px rgba(2, 6, 23, 0.55);
+}
+.mini-demo .person-name {
+  font-weight: 700;
+  color: #e6eef8;
+  margin-bottom: 0.45rem;
+}
+.mini-demo .tasks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.mini-demo .task {
+  padding: 0.45rem 0;
+  color: #cbd5e1;
+  font-size: 1.02rem;
+}
+.mini-demo .task-title {
+  font-weight: 600;
+  color: #f8fafc;
+}
+.mini-demo .task-meta {
+  color: #9ca3af;
+  margin-left: 0.5rem;
+  font-style: normal;
+}
+.mini-demo .meta-time {
+  color: #60a5fa;
+  font-weight: 600;
+}
+.mini-demo .meta-comment {
+  color: #fbbf24;
+  font-weight: 600;
+}
+.mini-demo .task.merged {
+  background: rgba(99, 102, 241, 0.03);
+  border-radius: 6px;
+  padding: 0.6rem;
+}
+
+@media (max-width: 700px) {
+  .mini-demo .two-lists {
+    flex-direction: column;
+    width: 92%;
+  }
+  .mini-demo .person {
+    width: 100%;
+  }
+}
