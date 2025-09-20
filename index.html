@@ -178,8 +178,86 @@
           </section>
         </section>
 
-        <!-- Slide 4 -->
-        <section>Eventual consistency</section>
+        <!-- Slide 4: Interactive replicas figure -->
+        <section>
+          <div class="replicas-figure center-graphic">
+            <div class="replicas-row">
+              <div class="replica" data-id="A">
+                <div class="replica-header">
+                  Replica A
+                  <span class="status-badge online" aria-hidden="true"
+                    >Online</span
+                  >
+                </div>
+                <ul class="replica-list" aria-live="polite">
+                  <li>Milk</li>
+                </ul>
+              </div>
+
+              <div class="replica" data-id="B">
+                <div class="replica-header">
+                  Replica B
+                  <span class="status-badge online" aria-hidden="true"
+                    >Online</span
+                  >
+                </div>
+                <ul class="replica-list" aria-live="polite">
+                  <li>Milk</li>
+                </ul>
+              </div>
+
+              <div class="replica" data-id="C">
+                <div class="replica-header">
+                  Replica C
+                  <span class="status-badge online" aria-hidden="true"
+                    >Online</span
+                  >
+                </div>
+                <ul class="replica-list" aria-live="polite">
+                  <li>Milk</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="replica-connections" aria-hidden="true">
+              <svg
+                class="replica-lines"
+                viewBox="0 0 600 120"
+                preserveAspectRatio="none"
+                role="img"
+                aria-hidden="true"
+              >
+                <!-- lines between centers of boxes -->
+                <line
+                  id="line-ab"
+                  class="line"
+                  x1="100"
+                  y1="60"
+                  x2="300"
+                  y2="60"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                />
+                <line
+                  id="line-bc"
+                  class="line"
+                  x1="300"
+                  y1="60"
+                  x2="500"
+                  y2="60"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+
+            <div class="replica-controls">
+              <button id="replica-btn" class="replica-button">
+                <span>&rarr;</span>
+              </button>
+            </div>
+          </div>
+        </section>
 
         <!-- Slide 5 -->
         <section>CRDTs</section>
@@ -212,5 +290,6 @@
 
     <script src="js/custom/network.js"></script>
     <script src="js/custom/console-sim.js"></script>
+    <script src="js/custom/replicas.js"></script>
   </body>
 </html>

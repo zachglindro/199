@@ -178,3 +178,115 @@
   margin-left: 0.2rem;
   animation: blink 1s steps(1) infinite;
 }
+
+/* Replicas interactive figure */
+.replicas-figure {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0.6rem auto;
+  color: #cbd5e1;
+}
+.replicas-row {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+.replica {
+  background: #0f1724;
+  border: 1px solid rgba(148, 163, 184, 0.08);
+  padding: 1rem;
+  border-radius: 8px;
+  width: 220px;
+  box-shadow: 0 8px 20px rgba(2, 6, 23, 0.6);
+}
+.replica-header {
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.status-badge {
+  font-size: 11px;
+  padding: 0.18rem 0.45rem;
+  border-radius: 999px;
+  background: #10b981;
+  color: white;
+  transition: background-color 300ms ease;
+}
+.status-badge.offline {
+  background: #ef4444;
+}
+.replica-list {
+  margin: 0;
+  padding-left: 1.15rem;
+  font-size: 1.02rem;
+}
+.replica-list li {
+  margin: 0.33rem 0;
+  transition: opacity 400ms ease-out, transform 400ms ease-out;
+}
+.replica-connections {
+  position: relative;
+  height: 40px;
+  margin-top: 0.8rem;
+}
+.replica-lines {
+  width: 100%;
+  height: 40px;
+  overflow: visible;
+}
+.line {
+  stroke: #60a5fa;
+  transition: stroke 300ms, opacity 300ms, stroke-dasharray 300ms;
+}
+.line.offline {
+  stroke: #6b7280;
+  opacity: 0.35;
+  stroke-dasharray: 4 6;
+}
+.glow {
+  filter: drop-shadow(0 0 6px rgba(96, 165, 250, 0.9));
+}
+.replica-button {
+  margin: 0.9rem auto 0;
+  display: block;
+  padding: 0.45rem 1rem;
+  border-radius: 6px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.replica-button:active {
+  transform: translateY(1px);
+}
+.replica-anim-arrow {
+  stroke: #93c5fd;
+  stroke-width: 2;
+  opacity: 0;
+  transition: opacity 300ms, transform 400ms;
+}
+.replica-anim-arrow.show {
+  opacity: 1;
+}
+.replica-anim-arrowhead {
+  fill: #93c5fd;
+  opacity: 0;
+  transition: opacity 300ms, transform 400ms;
+}
+.replica-anim-arrowhead.show {
+  opacity: 1;
+}
+
+@media (max-width: 640px) {
+  .replicas-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .replica {
+    width: 86%;
+  }
+}
