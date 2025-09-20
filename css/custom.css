@@ -25,6 +25,12 @@
   display: block;
 }
 
+/* Zed-specific icon size: larger than other icons without affecting them */
+.zed-icon {
+  width: 220px;
+  height: 220px;
+}
+
 .icon-figure figcaption {
   margin-top: 0.5rem;
   font-size: 1.15rem;
@@ -41,6 +47,11 @@
   .slide-icon {
     width: 110px;
     height: 110px;
+  }
+  /* scale down the zed icon on small screens */
+  .zed-icon {
+    width: 150px;
+    height: 150px;
   }
 }
 

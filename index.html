@@ -454,21 +454,199 @@
           </section>
         </section>
 
-        <!-- Slide 7-->
+        <!-- Slide 7 -->
         <section>
           <section>
             <p>State-based CRDTs</p>
+            <aside class="notes">
+              Now let's look at the other main type: state-based. Here, instead
+              of sending small operations, replicas send their entire state to
+              each other and merge them. The simplest example is a grow-only
+              set, where the merge is a set union.
+            </aside>
+          </section>
+
+          <!-- Initial state: Same as before -->
+          <section data-auto-animate>
+            <div class="mini-demo center-graphic">
+              <div class="two-lists">
+                <div class="person" id="alice-s7" data-id="person-alice-s7">
+                  <div class="person-name" data-id="name-alice-s7">Alice</div>
+                  <ul class="tasks">
+                    <li class="task" data-id="s7-t1">
+                      <span class="task-title">Buy milk</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="person" id="bob-s7" data-id="person-bob-s7">
+                  <div class="person-name" data-id="name-bob-s7">Bob</div>
+                  <ul class="tasks">
+                    <li class="task" data-id="s7-t1">
+                      <span class="task-title">Buy milk</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- local edits: Alice adds 'Get bread', Bob adds 'Wash car' -->
+          <section data-auto-animate>
+            <div class="mini-demo center-graphic">
+              <div class="two-lists">
+                <div class="person" id="alice-s7" data-id="person-alice-s7">
+                  <div class="person-name" data-id="name-alice-s7">Alice</div>
+                  <ul class="tasks">
+                    <li class="task" data-id="s7-t1">
+                      <span class="task-title">Buy milk</span>
+                    </li>
+                    <!-- Alice's new state includes a new item -->
+                    <li class="task" data-id="s7-t2">
+                      <span class="task-title">Get bread</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="person" id="bob-s7" data-id="person-bob-s7">
+                  <div class="person-name" data-id="name-bob-s7">Bob</div>
+                  <ul class="tasks">
+                    <li class="task" data-id="s7-t1">
+                      <span class="task-title">Buy milk</span>
+                    </li>
+                    <!-- Bob's new state includes a different new item -->
+                    <li class="task" data-id="s7-t3aa">
+                      <span class="task-title">Wash car</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <aside class="notes">
+              While offline, Alice realizes she needs bread and adds it. Her
+              state is now {milk, bread}. Concurrently, Bob adds 'Wash car' to
+              his list. His state is {milk, car}. Notice they are changing the
+              state of the whole list, not just one item.
+            </aside>
+          </section>
+
+          <!-- after sync: states are merged (set union) -->
+          <section data-auto-animate>
+            <div class="mini-demo center-graphic">
+              <div class="two-lists">
+                <div class="person" id="alice-s7" data-id="person-alice-s7">
+                  <div class="person-name" data-id="name-alice-s7">Alice</div>
+                  <ul class="tasks merged">
+                    <li class="task" data-id="s7-t1">
+                      <span class="task-title">Buy milk</span>
+                    </li>
+                    <li class="task" data-id="s7-t2">
+                      <span class="task-title">Get bread</span>
+                    </li>
+                    <li class="task" data-id="s7-t3">
+                      <span class="task-title">Wash‎ car</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="person" id="bob-s7" data-id="person-bob-s7">
+                  <div class="person-name" data-id="name-bob-s7">Bob</div>
+                  <ul class="tasks merged">
+                    <li class="task" data-id="s7-t1">
+                      <span class="task-title">Buy milk</span>
+                    </li>
+                    <li class="task" data-id="s7-t2">
+                      <span class="task-title">Get bread</span>
+                    </li>
+                    <li class="task" data-id="s7-t3">
+                      <span class="task-title">Wash car</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <aside class="notes">
+              When they sync, Alice sends her entire state to Bob, and Bob sends
+              his to Alice. The merge function is a simple union of the two
+              sets. The result is a list containing all three items, which is
+              the same for both of them. They have converged.
+            </aside>
           </section>
         </section>
 
         <!-- Slide 8 -->
-        <section>Examples</section>
+        <section>
+          <section>
+            <p>Examples</p>
+          </section>
+          <section>
+            <div class="icons-row" aria-hidden="false">
+              <figure class="icon-figure">
+                <img
+                  src="assets/Apple_Notes_icon.svg"
+                  alt="Apple Notes icon"
+                  class="slide-icon"
+                />
+                <figcaption>apple notes</figcaption>
+              </figure>
+              <figure class="icon-figure">
+                <img
+                  src="assets/apple_notes.gif"
+                  alt="Apple Notes demo GIF"
+                  class="slide-gif"
+                />
+                <figcaption>
+                  ... and possibly apple reminders and photos?
+                </figcaption>
+              </figure>
+            </div>
+          </section>
+          <section>
+            <div class="icons-row" aria-hidden="false">
+              <figure class="icon-figure">
+                <img
+                  src="assets/zed.png"
+                  alt="Zed editor icon"
+                  class="slide-icon zed-icon"
+                />
+                <figcaption>zed</figcaption>
+              </figure>
+              <figure class="icon-figure">
+                <video
+                  src="assets/zed%20demo.webm"
+                  aria-label="Zed demo video"
+                  controls
+                ></video>
+                <figcaption>zed demo</figcaption>
+              </figure>
+            </div>
+          </section>
+        </section>
 
         <!-- Slide 9 -->
-        <section>PCGRID</section>
+        <section>
+          <section
+            data-background-iframe="https://hakim.se"
+            data-background-interactive
+          >
+            <div
+              style="
+                position: absolute;
+                width: 40%;
+                right: 0;
+                box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5),
+                  0 5px 25px rgba(0, 0, 0, 0.2);
+                background-color: rgba(0, 0, 0, 0.9);
+                color: #fff;
+                padding: 20px;
+                font-size: 20px;
+                text-align: left;
+              "
+            >
+              <p>Cereals Inventory web app</p>
+            </div>
+          </section>
+        </section>
 
         <!-- Slide 10 -->
-        <section>PCGRID</section>
+        <section>Cereals inventory</section>
 
         <!-- Slide 11 -->
         <section>Conclusion</section>
