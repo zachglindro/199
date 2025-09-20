@@ -21,7 +21,7 @@
   <body>
     <div class="reveal" role="region" aria-label="Presentation slides">
       <div class="slides">
-		<!-- Slide 1 -->
+        <!-- Slide 1 -->
         <section>
           <h3>CRDT<span style="text-transform: lowercase">s</span></h3>
           <p>Enabling Collaboration in a Decentralized Systems</p>
@@ -30,7 +30,7 @@
           </p>
         </section>
 
-		<!-- Slide 2 -->
+        <!-- Slide 2 -->
         <section>
           <section>
             <div class="icons-row" aria-hidden="false">
@@ -58,7 +58,7 @@
           </section>
         </section>
 
-		<!-- Slide 3-->
+        <!-- Slide 3-->
         <section>
           <section>
             <div class="center-graphic">
@@ -80,7 +80,7 @@
                 </defs>
                 <!-- links (rendered first so they appear behind nodes) -->
                 <line
-                  class="link"
+                  class="link offline"
                   data-from="c1"
                   x1="120"
                   y1="80"
@@ -88,7 +88,7 @@
                   y2="180"
                 />
                 <line
-                  class="link"
+                  class="link offline"
                   data-from="c2"
                   x1="480"
                   y1="80"
@@ -96,7 +96,7 @@
                   y2="180"
                 />
                 <line
-                  class="link"
+                  class="link offline"
                   data-from="c3"
                   x1="300"
                   y1="300"
@@ -104,7 +104,7 @@
                   y2="180"
                 />
                 <!-- central server -->
-                <g id="server" transform="translate(300,180)">
+                <g id="server" class="offline" transform="translate(300,180)">
                   <rect
                     x="-36"
                     y="-22"
@@ -119,19 +119,31 @@
                   </text>
                 </g>
                 <!-- clients -->
-                <g class="client" data-id="c1" transform="translate(120,80)">
+                <g
+                  class="client offline"
+                  data-id="c1"
+                  transform="translate(120,80)"
+                >
                   <circle r="18" class="client-dot" />
                   <text y="34" text-anchor="middle" class="client-label">
                     A
                   </text>
                 </g>
-                <g class="client" data-id="c2" transform="translate(480,80)">
+                <g
+                  class="client offline"
+                  data-id="c2"
+                  transform="translate(480,80)"
+                >
                   <circle r="18" class="client-dot" />
                   <text y="34" text-anchor="middle" class="client-label">
                     B
                   </text>
                 </g>
-                <g class="client" data-id="c3" transform="translate(300,300)">
+                <g
+                  class="client offline"
+                  data-id="c3"
+                  transform="translate(300,300)"
+                >
                   <circle r="18" class="client-dot" />
                   <text y="34" text-anchor="middle" class="client-label">
                     C
@@ -154,13 +166,13 @@
           </section>
         </section>
 
-		<!-- Slide 4 -->
+        <!-- Slide 4 -->
         <section>Eventual consistency</section>
 
-		<!-- Slide 5 -->
+        <!-- Slide 5 -->
         <section>CRDTs</section>
 
-		<!-- Slide 6 -->
+        <!-- Slide 6 -->
         <section>CmRDTs</section>
         <section>CvRDTs</section>
         <section>Examples</section>
