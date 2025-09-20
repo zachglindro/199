@@ -810,53 +810,93 @@
         <section>
           <!-- Step 1: single word CRDT (left-shifted for emphasis) -->
           <section data-auto-animate>
-            <div class="crdts-stack left-shift">
-              <div class="crdts-row">
-                <span class="crdts-letter" data-id="letter-C-s11">C</span>
-                <span class="crdts-letter" data-id="letter-R-s11">R</span>
-                <span class="crdts-letter" data-id="letter-D-s11">D</span>
-                <span class="crdts-letter" data-id="letter-T-s11">T</span>
+            <div
+              style="
+                display: flex;
+                gap: 40px;
+                align-items: flex-start;
+                justify-content: center;
+              "
+            >
+              <div class="crdts-stack left-shift" style="flex: 0 0 auto">
+                <div class="crdts-row">
+                  <span class="crdts-letter" data-id="letter-C-s11">C</span>
+                  <span class="crdts-letter" data-id="letter-R-s11">R</span>
+                  <span class="crdts-letter" data-id="letter-D-s11">D</span>
+                  <span class="crdts-letter" data-id="letter-T-s11">T</span>
+                </div>
               </div>
             </div>
           </section>
 
           <!-- Step 2: full words vertically (letters kept as same elements for auto-animate), also left-shifted -->
           <section data-auto-animate>
-            <div class="crdts-stack left-shift">
-              <div class="crdts-words">
-                <div>
-                  <span>
-                    <span class="crdts-letter" data-id="letter-C-s11">C</span>
-                    <span class="crdts-tail">onflict-free</span>
-                  </span>
-                </div>
-                <div>
-                  <span>
-                    <span class="crdts-letter" data-id="letter-R-s11">R</span>
-                    <span class="crdts-tail">eplicated</span>
-                  </span>
-                </div>
-                <div>
-                  <span>
-                    <span class="crdts-letter" data-id="letter-D-s11">D</span>
-                    <span class="crdts-tail">ata</span>
-                  </span>
-                </div>
-                <div>
-                  <span>
-                    <span class="crdts-letter" data-id="letter-T-s11">T</span>
-                    <span class="crdts-tail">ypes</span>
-                  </span>
+            <div
+              style="
+                display: flex;
+                gap: 40px;
+                align-items: flex-start;
+                justify-content: center;
+              "
+            >
+              <div class="crdts-stack left-shift" style="flex: 0 0 auto">
+                <div class="crdts-words">
+                  <div>
+                    <span>
+                      <span class="crdts-letter" data-id="letter-C-s11">C</span>
+                      <span class="crdts-tail">onflict-free</span>
+                    </span>
+                  </div>
+                  <div>
+                    <span>
+                      <span class="crdts-letter" data-id="letter-R-s11">R</span>
+                      <span class="crdts-tail">eplicated</span>
+                    </span>
+                  </div>
+                  <div>
+                    <span>
+                      <span class="crdts-letter" data-id="letter-D-s11">D</span>
+                      <span class="crdts-tail">ata</span>
+                    </span>
+                  </div>
+                  <div>
+                    <span>
+                      <span class="crdts-letter" data-id="letter-T-s11">T</span>
+                      <span class="crdts-tail">ypes</span>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
+
+          <!-- Static right column (outside the auto-animate subsections so it won't animate) -->
+          <div
+            class="slide-right-column"
+            aria-hidden="false"
+            style="position: absolute; right: 120px; top: 50%; transform: translateY(-50%); max-width: 420px"
+          >
+            <ul
+              style="
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                font-size: 2rem;
+                line-height: 1.6;
+                text-align: left;
+              "
+            >
+              <li>Local-first software</li>
+              <li>Strong eventual consistency</li>
+              <li>Performance and storage</li>
+              <li>Maturity</li>
+            </ul>
+          </div>
           </section>
         </section>
 
         <!-- Slide 12 -->
         <section>
           <p>Thank you!</p>
-          <p>Q & A</p>
         </section>
       </div>
     </div>
