@@ -623,12 +623,173 @@
         <!-- Slide 9 -->
         <section>
           <section
-            data-background-iframe="https://hakim.se"
+            data-background-iframe="assets/sites/login.htm"
             data-background-interactive
           >
+            <!-- Fake browser address bar to signal an actual site -->
             <div
               style="
                 position: absolute;
+                top: -55px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 70%;
+                max-width: 920px;
+                z-index: 20;
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  background: rgba(255, 255, 255, 0.92);
+                  color: #222;
+                  border-radius: 8px;
+                  padding: 8px 12px;
+                  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+                  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                    Roboto, 'Helvetica Neue', Arial;
+                  font-size: 13px;
+                "
+              >
+                <div
+                  style="
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background: #ff5f56;
+                    box-shadow: 0 0 0 6px rgba(255, 95, 86, 0.03) inset;
+                  "
+                ></div>
+                <div
+                  style="
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background: #ffbd2e;
+                  "
+                ></div>
+                <div
+                  style="
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background: #27c93f;
+                  "
+                ></div>
+                <div
+                  style="
+                    flex: 1;
+                    margin-left: 6px;
+                    color: #444;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  "
+                >
+                  cereals-inventory.vercel.app
+                </div>
+                <div style="margin-left: 8px; color: #777; font-size: 12px">
+                  ⎘
+                </div>
+              </div>
+            </div>
+            <div
+              style="
+                position: absolute;
+                bottom: -600px;
+                left: -150px;
+                width: 40%;
+                box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5),
+                  0 5px 25px rgba(0, 0, 0, 0.2);
+                background-color: rgba(0, 0, 0, 0.9);
+                color: #fff;
+                padding: 20px;
+                font-size: 20px;
+                text-align: left;
+              "
+            >
+              <p>Cereals Inventory web app</p>
+            </div>
+          </section>
+          <section
+            data-background-iframe="assets/sites/Cereals%20Inventory%20System.htm"
+            data-background-interactive
+          >
+            <!-- Fake browser address bar to signal an actual site -->
+            <div
+              style="
+                position: absolute;
+                top: -55px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 70%;
+                max-width: 920px;
+                z-index: 20;
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  background: rgba(255, 255, 255, 0.92);
+                  color: #222;
+                  border-radius: 8px;
+                  padding: 8px 12px;
+                  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+                  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                    Roboto, 'Helvetica Neue', Arial;
+                  font-size: 13px;
+                "
+              >
+                <div
+                  style="
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background: #ff5f56;
+                  "
+                ></div>
+                <div
+                  style="
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background: #ffbd2e;
+                  "
+                ></div>
+                <div
+                  style="
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                    background: #27c93f;
+                  "
+                ></div>
+                <div
+                  style="
+                    flex: 1;
+                    margin-left: 6px;
+                    color: #444;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                  "
+                >
+                  cereals-inventory.vercel.app/dashboard
+                </div>
+                <div style="margin-left: 8px; color: #777; font-size: 12px">
+                  ⎘
+                </div>
+              </div>
+            </div>
+            <div
+              style="
+                position: absolute;
+                bottom: -600px;
+                left: -150px;
                 width: 40%;
                 right: 0;
                 box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5),
@@ -645,11 +806,52 @@
           </section>
         </section>
 
-        <!-- Slide 10 -->
-        <section>Cereals inventory</section>
+        <!-- Slide 11: Conclusion - small replica of slide 5 steps shifted left -->
+        <section>
+          <!-- Step 1: single word CRDT (left-shifted for emphasis) -->
+          <section data-auto-animate>
+            <div class="crdts-stack left-shift">
+              <div class="crdts-row">
+                <span class="crdts-letter" data-id="letter-C-s11">C</span>
+                <span class="crdts-letter" data-id="letter-R-s11">R</span>
+                <span class="crdts-letter" data-id="letter-D-s11">D</span>
+                <span class="crdts-letter" data-id="letter-T-s11">T</span>
+              </div>
+            </div>
+          </section>
 
-        <!-- Slide 11 -->
-        <section>Conclusion</section>
+          <!-- Step 2: full words vertically (letters kept as same elements for auto-animate), also left-shifted -->
+          <section data-auto-animate>
+            <div class="crdts-stack left-shift">
+              <div class="crdts-words">
+                <div>
+                  <span>
+                    <span class="crdts-letter" data-id="letter-C-s11">C</span>
+                    <span class="crdts-tail">onflict-free</span>
+                  </span>
+                </div>
+                <div>
+                  <span>
+                    <span class="crdts-letter" data-id="letter-R-s11">R</span>
+                    <span class="crdts-tail">eplicated</span>
+                  </span>
+                </div>
+                <div>
+                  <span>
+                    <span class="crdts-letter" data-id="letter-D-s11">D</span>
+                    <span class="crdts-tail">ata</span>
+                  </span>
+                </div>
+                <div>
+                  <span>
+                    <span class="crdts-letter" data-id="letter-T-s11">T</span>
+                    <span class="crdts-tail">ypes</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
 
         <!-- Slide 12 -->
         <section>

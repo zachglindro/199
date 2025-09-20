@@ -367,3 +367,16 @@
     width: 100%;
   }
 }
+
+/* Left-shift helper for copied / summary subsections (slide 11) */
+.left-shift {
+  display: inline-block;
+  transform: translateX(-20rem); /* nudge left; adjust as needed */
+}
+
+@media (max-width: 900px) {
+  /* reduce shift on smaller screens so content remains visible */
+  .left-shift {
+    transform: translateX(-4rem);
+  }
+}
