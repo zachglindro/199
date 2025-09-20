@@ -45,13 +45,8 @@
         flex-direction: column;
         gap: 0; /* no extra gap; we'll control line-height */
         align-items: flex-start; /* left-align the tails under the letter */
-        /* make the vertical stack the same computed height as the letter
-           by using the letter's font-size as a reference */
         font-size: 2.25rem; /* half of .crdts-letter (4.5rem) */
-        line-height: 1; /* ensure two lines add up to letter height */
-        height: calc(
-          1em * 2
-        ); /* explicit: two lines at 1em each equals letter */
+        align-self: center;
         vertical-align: middle;
         margin-left: 0.5rem; /* small gap to the right of the letter */
       }
@@ -64,6 +59,12 @@
         /* optional: keep block compact on very wide slides */
         max-width: 28rem;
         vertical-align: middle;
+      }
+      /* Ensure the big letter itself aligns vertically with the middle of the stacked tails */
+      .crdts-spec-letter {
+        vertical-align: middle;
+        font-size: 2.25em;
+        font-weight: bold;
       }
       /* ensure the stack container centers the inline-block */
       .crdts-stack {
@@ -470,7 +471,7 @@
               <div class="crdts-words">
                 <div>
                   <span>
-                    <span class="crdts-letter" data-id="letter-C">C</span>
+                    <span class="crdts-spec-letter" data-id="letter-C">C</span>
                     <span class="crdts-vertical">
                       <span class="crdts-tail crdts-highlight no-animate"
                         >ommutative</span
@@ -510,7 +511,7 @@
               <div class="crdts-words">
                 <div>
                   <span>
-                    <span class="crdts-letter" data-id="letter-C">C</span>
+                    <span class="crdts-spec-letter" data-id="letter-C">C</span>
                     <span class="crdts-vertical">
                       <span class="crdts-tail">ommutative</span>
                       <span class="crdts-tail crdts-highlight">onvergent</span>
