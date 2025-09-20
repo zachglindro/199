@@ -16,6 +16,62 @@
     <!-- Theme used for syntax highlighted code -->
     <link rel="stylesheet" href="plugin/highlight/monokai.css" />
     <link rel="stylesheet" href="css/custom.css" />
+    <style>
+      /* lightweight styles specifically for the CRDTs auto-animate slide */
+      .crdts-stack {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+      .crdts-row {
+        display: flex;
+        gap: 0;
+        align-items: center;
+        justify-content: center;
+      }
+      .crdts-letter {
+        font-size: 4.5rem;
+        line-height: 1;
+        font-weight: 700;
+        display: inline-block;
+      }
+      .crdts-vertical {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        align-items: center;
+      }
+      .crdts-words {
+        font-size: 2.25rem;
+        line-height: 1.1;
+        /* make the whole block shrink-wrap so it can be centered, but left-align its lines */
+        display: inline-block;
+        text-align: left;
+        /* optional: keep block compact on very wide slides */
+        max-width: 28rem;
+        vertical-align: middle;
+      }
+      /* ensure the stack container centers the inline-block */
+      .crdts-stack {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      /* hide trailing fragments until revealed */
+      .crdts-tail {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(6px);
+        transition: opacity 300ms ease, transform 300ms ease;
+        will-change: opacity, transform;
+      }
+      .crdts-tail.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
   </head>
 
   <body>
@@ -178,7 +234,7 @@
           </section>
         </section>
 
-		<!-- Slide 4: Eventual consistency -->
+        <!-- Slide 4: Eventual consistency -->
         <section>
           <section><p>Eventual consistency</p></section>
           <section>
@@ -264,7 +320,51 @@
         </section>
 
         <!-- Slide 5 -->
-        <section>CRDTs</section>
+        <section>
+          <!-- step 1: single word CRDT -->
+          <section data-auto-animate>
+            <div class="crdts-stack">
+              <div class="crdts-row">
+                <span class="crdts-letter" data-id="letter-C">C</span>
+                <span class="crdts-letter" data-id="letter-R">R</span>
+                <span class="crdts-letter" data-id="letter-D">D</span>
+                <span class="crdts-letter" data-id="letter-T">T</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- step 2: full words laid out vertically (letters kept as same elements for auto-animate) -->
+          <section data-auto-animate>
+            <div class="crdts-stack">
+              <div class="crdts-words">
+                <div>
+                  <span>
+                    <span class="crdts-letter" data-id="letter-C">C</span>
+                    <span class="crdts-tail">onflict-free</span>
+                  </span>
+                </div>
+                <div>
+                  <span>
+                    <span class="crdts-letter" data-id="letter-R">R</span>
+                    <span class="crdts-tail">eplicated</span>
+                  </span>
+                </div>
+                <div>
+                  <span>
+                    <span class="crdts-letter" data-id="letter-D">D</span>
+                    <span class="crdts-tail">ata</span>
+                  </span>
+                </div>
+                <div>
+                  <span>
+                    <span class="crdts-letter" data-id="letter-T">T</span>
+                    <span class="crdts-tail">ypes</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
 
         <!-- Slide 6 -->
         <section>CmRDTs</section>
@@ -290,6 +390,80 @@
         // Learn about plugins: https://revealjs.com/plugins/
         plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
       });
+      // Delayed reveal for CRDT word fragments on the CRDT slide step
+      (function () {
+        var crdtTimeout = null;
+        function hideTails() {
+          var tails = document.querySelectorAll(".crdts-tail");
+          tails.forEach(function (el) {
+            el.classList.remove("visible");
+          });
+        }
+
+        function revealTailsDelayed() {
+          // Clear any existing timer
+          if (crdtTimeout) {
+            clearTimeout(crdtTimeout);
+            crdtTimeout = null;
+          }
+          crdtTimeout = setTimeout(function () {
+            var tails = document.querySelectorAll(".crdts-tail");
+            tails.forEach(function (el) {
+              el.classList.add("visible");
+            });
+            crdtTimeout = null;
+          }, 1000);
+        }
+
+        // On initial ready and when the slide changes, check if we're on the CRDT step
+        function onRevealEvent(e) {
+          // The step containing .crdts-words will be in the DOM as the current slide
+          var current =
+            e && e.currentSlide
+              ? e.currentSlide
+              : document.querySelector(".slides section.present");
+          if (!current) return;
+          if (current.querySelector && current.querySelector(".crdts-words")) {
+            // reveal after delay
+            revealTailsDelayed();
+          } else {
+            // hide immediately when leaving
+            if (crdtTimeout) {
+              clearTimeout(crdtTimeout);
+              crdtTimeout = null;
+            }
+            hideTails();
+          }
+        }
+
+        Reveal.on("ready", onRevealEvent);
+        Reveal.on("slidechanged", onRevealEvent);
+        // In case fragments/auto-animate steps are used inside the slide, also listen for 'fragmentshown' and 'fragmenthidden'
+        Reveal.on("fragmentshown", function (e) {
+          // if the fragment is part of the CRDT stack step, ensure tails are revealed
+          var slide =
+            e.fragment && e.fragment.closest
+              ? e.fragment.closest("section.present")
+              : null;
+          if (slide && slide.querySelector(".crdts-words")) {
+            revealTailsDelayed();
+          }
+        });
+        Reveal.on("fragmenthidden", function (e) {
+          var slide =
+            e.fragment && e.fragment.closest
+              ? e.fragment.closest("section.present")
+              : null;
+          if (slide && slide.querySelector(".crdts-words")) {
+            // hiding fragments should also hide tails
+            if (crdtTimeout) {
+              clearTimeout(crdtTimeout);
+              crdtTimeout = null;
+            }
+            hideTails();
+          }
+        });
+      })();
     </script>
 
     <script src="js/custom/network.js"></script>
