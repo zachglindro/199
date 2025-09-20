@@ -19,22 +19,28 @@
 }
 
 .slide-icon {
-  width: 96px;
-  height: 96px;
+  width: 140px;
+  height: 140px;
   object-fit: contain;
   display: block;
 }
 
 .icon-figure figcaption {
   margin-top: 0.5rem;
-  font-size: 0.9rem;
+  font-size: 1.15rem;
   color: #9ca3af;
+}
+
+.icon-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 @media (max-width: 640px) {
   .slide-icon {
-    width: 64px;
-    height: 64px;
+    width: 110px;
+    height: 110px;
   }
 }
 
