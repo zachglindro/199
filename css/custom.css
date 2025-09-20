@@ -85,6 +85,19 @@
   transition: stroke 200ms, opacity 200ms;
 }
 
+/* server clickable styles */
+#server {
+  cursor: default;
+  transition: fill 200ms, stroke 200ms, opacity 200ms, transform 200ms;
+}
+
+#server.offline .server-box {
+  fill: #0f1724; /* darker */
+  stroke: #475569; /* muted */
+  opacity: 0.8;
+  transform: scale(0.98);
+}
+
 .client.offline .client-dot {
   fill: #374151;
   opacity: 0.6;
