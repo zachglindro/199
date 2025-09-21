@@ -89,3 +89,30 @@
 .crdts-highlight ~ .crdts-tail {
   opacity: 1;
 }
+
+/* Responsive adjustments: reduce sizes so the CRDT stack fits on small screens */
+@media (max-width: 920px) {
+  .crdts-stack {
+    padding: 0.5rem 1rem;
+  }
+  .crdts-row {
+    gap: 0.25rem;
+  }
+  .crdts-letter {
+    font-size: 3.5rem;
+  }
+  .crdts-words {
+    font-size: 1.6rem;
+    max-width: 20rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .crdts-letter {
+    font-size: 2.75rem;
+  }
+  .crdts-words {
+    font-size: 1.15rem;
+    max-width: 18rem;
+  }
+}

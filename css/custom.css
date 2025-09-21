@@ -380,3 +380,49 @@
     transform: translateX(-4rem);
   }
 }
+
+/* Responsive layout for slide 11: ensure left and right columns don't overlap
+   by switching to a stacked layout on narrow screens. The HTML uses an outer
+   flex-like arrangement inline; target the slide container and the right column. */
+@media (max-width: 920px) {
+  /* undo large left shift entirely on small screens so the left column stays
+     within the viewport and can flow above the right column */
+  .left-shift {
+    transform: none;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Slide right column becomes a normal block below the main content */
+  .slide-right-column {
+    position: static !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
+    /* cap the visual width so the column appears as a centered block
+       instead of stretching full-width; it will shrink on very small
+       screens via the min() value */
+    width: min(420px, 92%) !important;
+    max-width: 420px !important;
+    margin: 1.25rem auto 0;
+    text-align: left;
+  }
+
+  /* Make sure any absolutely positioned children inside the right column
+     behave well when stacked */
+  .slide-right-column > * {
+    position: relative;
+  }
+}
+
+/* Extra small screens: slightly reduce spacing and icon/word sizes so the
+   slide content remains readable without overlap */
+@media (max-width: 700px) {
+  .crdts-letter {
+    font-size: 3rem; /* smaller big letters */
+  }
+  .crdts-words {
+    font-size: 1.4rem;
+    max-width: 24rem;
+  }
+}
